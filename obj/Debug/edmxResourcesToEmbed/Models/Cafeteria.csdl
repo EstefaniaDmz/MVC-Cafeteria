@@ -1,0 +1,1965 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeteriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Almacen">
+    <Key>
+      <PropertyRef Name="idAlmacen" />
+    </Key>
+    <Property Name="idAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="capacidad" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKAlmacenUsuarioCrea" FromRole="Almacen" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKAlmacenUsuarioModifica" FromRole="Almacen" ToRole="Usuario" />
+    <NavigationProperty Name="Material" Relationship="Self.FKMaterialAlmacen" FromRole="Almacen" ToRole="Material" />
+  </EntityType>
+  <EntityType Name="Asentamiento">
+    <Key>
+      <PropertyRef Name="idAsentamiento" />
+    </Key>
+    <Property Name="idAsentamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codigoPostal" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="idTipoAsentamiento" Type="Int32" Nullable="false" />
+    <Property Name="idMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <Property Name="idZona" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Municipio" Relationship="Self.FKAsentamientoMunicipio" FromRole="Asentamiento" ToRole="Municipio" />
+    <NavigationProperty Name="TipoAsentamiento" Relationship="Self.FKAsentamientoTipoAsentamiento" FromRole="Asentamiento" ToRole="TipoAsentamiento" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKAsentamientoUsuarioCrea" FromRole="Asentamiento" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKAsentamientoUsuarioModifica" FromRole="Asentamiento" ToRole="Usuario" />
+    <NavigationProperty Name="Zona" Relationship="Self.FKAsentamientoZona" FromRole="Asentamiento" ToRole="Zona" />
+    <NavigationProperty Name="Proveedor" Relationship="Self.FKProveedorAsentamiento" FromRole="Asentamiento" ToRole="Proveedor" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FKSucursalAsentamiento" FromRole="Asentamiento" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="Asistencia">
+    <Key>
+      <PropertyRef Name="idAsistencia" />
+    </Key>
+    <Property Name="idAsistencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="horaLlegada" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="horaSalida" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="idTrabajador" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Trabajador" Relationship="Self.FKAsistenciaTrabajador" FromRole="Asistencia" ToRole="Trabajador" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKAsistenciaUsuarioCrea" FromRole="Asistencia" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKAsistenciaUsuarioModifica" FromRole="Asistencia" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rfc" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idTipoCliente" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TipoCliente" Relationship="Self.FKClienteTipoCliente" FromRole="Cliente" ToRole="TipoCliente" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKClienteUsuarioCrea" FromRole="Cliente" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKClienteUsuarioModifica" FromRole="Cliente" ToRole="Usuario" />
+    <NavigationProperty Name="Venta" Relationship="Self.FKVentaCliente" FromRole="Cliente" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="idCompra" />
+    </Key>
+    <Property Name="idCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idProveedor" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Proveedor" Relationship="Self.FKCompraProveedor" FromRole="Compra" ToRole="Proveedor" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKCompraUsuarioCrea" FromRole="Compra" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKCompraUsuarioModifica" FromRole="Compra" ToRole="Usuario" />
+    <NavigationProperty Name="DevolucionCompra" Relationship="Self.FKDevolucionCompraCompra" FromRole="Compra" ToRole="DevolucionCompra" />
+    <NavigationProperty Name="Material" Relationship="Self.FKMaterialCompra" FromRole="Compra" ToRole="Material" />
+  </EntityType>
+  <EntityType Name="CorteVenta">
+    <Key>
+      <PropertyRef Name="idCorteVenta" />
+    </Key>
+    <Property Name="idCorteVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="caja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="gasto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="tarjeta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idTrabajador" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Trabajador" Relationship="Self.FKCorteVentaTrabajador" FromRole="CorteVenta" ToRole="Trabajador" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKCorteVentaUsuarioCrea" FromRole="CorteVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKCorteVentaUsuarioModifica" FromRole="CorteVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Venta1" Relationship="Self.FKVentaCorteVenta" FromRole="CorteVenta" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Descuento">
+    <Key>
+      <PropertyRef Name="idDescuento" />
+    </Key>
+    <Property Name="idDescuento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="porcentaje" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKDescuentoUsuarioCrea" FromRole="Descuento" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKDescuentoUsuarioModifica" FromRole="Descuento" ToRole="Usuario" />
+    <NavigationProperty Name="DescuentoVenta" Relationship="Self.FKDescuentoVentaDescuento" FromRole="Descuento" ToRole="DescuentoVenta" />
+  </EntityType>
+  <EntityType Name="DescuentoVenta">
+    <Key>
+      <PropertyRef Name="idDescuentoVenta" />
+    </Key>
+    <Property Name="idDescuentoVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idDescuento" Type="Int32" Nullable="false" />
+    <Property Name="idVenta" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Descuento" Relationship="Self.FKDescuentoVentaDescuento" FromRole="DescuentoVenta" ToRole="Descuento" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKDescuentoVentaUsuarioCrea" FromRole="DescuentoVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKDescuentoVentaUsuarioModifica" FromRole="DescuentoVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Venta" Relationship="Self.FKDescuentoVentaVenta" FromRole="DescuentoVenta" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="DevolucionCompra">
+    <Key>
+      <PropertyRef Name="idDevolucionCompra" />
+    </Key>
+    <Property Name="idDevolucionCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="platillo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="razon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="costo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idCompra" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Compra" Relationship="Self.FKDevolucionCompraCompra" FromRole="DevolucionCompra" ToRole="Compra" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKDevolucionCompraUsuarioCrea" FromRole="DevolucionCompra" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKDevolucionCompraUsuarioModifica" FromRole="DevolucionCompra" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="DevolucionVenta">
+    <Key>
+      <PropertyRef Name="idDevolucionVenta" />
+    </Key>
+    <Property Name="idDevolucionVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="platillo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="razon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="costo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idVenta" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKDevolucionVentaUsuarioCrea" FromRole="DevolucionVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKDevolucionVentaUsuarioModifica" FromRole="DevolucionVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Venta" Relationship="Self.FKDevolucionVentaVenta" FromRole="DevolucionVenta" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKEstadoUsuarioCrea" FromRole="Estado" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKEstadoUsuarioModifica" FromRole="Estado" ToRole="Usuario" />
+    <NavigationProperty Name="Municipio" Relationship="Self.FKMunicipioEstado" FromRole="Estado" ToRole="Municipio" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="idMaterial" />
+    </Key>
+    <Property Name="idMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="idCompra" Type="Int32" Nullable="false" />
+    <Property Name="idAlmacen" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Almacen" Relationship="Self.FKMaterialAlmacen" FromRole="Material" ToRole="Almacen" />
+    <NavigationProperty Name="Compra" Relationship="Self.FKMaterialCompra" FromRole="Material" ToRole="Compra" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKMaterialUsuarioCrea" FromRole="Material" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKMaterialUsuarioModifica" FromRole="Material" ToRole="Usuario" />
+    <NavigationProperty Name="PlatilloMaterial" Relationship="Self.FKPlatilloMaterialMaterial" FromRole="Material" ToRole="PlatilloMaterial" />
+  </EntityType>
+  <EntityType Name="Municipio">
+    <Key>
+      <PropertyRef Name="idMunicipio" />
+    </Key>
+    <Property Name="idMunicipio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codigo" Type="Int32" Nullable="false" />
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Asentamiento" Relationship="Self.FKAsentamientoMunicipio" FromRole="Municipio" ToRole="Asentamiento" />
+    <NavigationProperty Name="Estado" Relationship="Self.FKMunicipioEstado" FromRole="Municipio" ToRole="Estado" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKMunicipioUsuarioCrea" FromRole="Municipio" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKMunicipioUsuarioModifica" FromRole="Municipio" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Platillo">
+    <Key>
+      <PropertyRef Name="idPlatillo" />
+    </Key>
+    <Property Name="idPlatillo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="costo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idTipoPlatillo" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PlatilloMaterial" Relationship="Self.FKPlatilloMaterialPlatillo" FromRole="Platillo" ToRole="PlatilloMaterial" />
+    <NavigationProperty Name="TipoPlatillo" Relationship="Self.FKPlatilloTipoPlatillo" FromRole="Platillo" ToRole="TipoPlatillo" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKPlatilloUsuarioCrea" FromRole="Platillo" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKPlatilloUsuarioModifica" FromRole="Platillo" ToRole="Usuario" />
+    <NavigationProperty Name="PlatilloVenta" Relationship="Self.FKPlatilloVentaPlatillo" FromRole="Platillo" ToRole="PlatilloVenta" />
+  </EntityType>
+  <EntityType Name="PlatilloMaterial">
+    <Key>
+      <PropertyRef Name="idPlatilloMaterial" />
+    </Key>
+    <Property Name="idPlatilloMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPlatillo" Type="Int32" Nullable="false" />
+    <Property Name="idMaterial" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Material" Relationship="Self.FKPlatilloMaterialMaterial" FromRole="PlatilloMaterial" ToRole="Material" />
+    <NavigationProperty Name="Platillo" Relationship="Self.FKPlatilloMaterialPlatillo" FromRole="PlatilloMaterial" ToRole="Platillo" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKPlatilloMaterialUsuarioCrea" FromRole="PlatilloMaterial" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKPlatilloMaterialUsuarioModifica" FromRole="PlatilloMaterial" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="PlatilloVenta">
+    <Key>
+      <PropertyRef Name="idPlatilloVenta" />
+    </Key>
+    <Property Name="idPlatilloVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPlatillo" Type="Int32" Nullable="false" />
+    <Property Name="idVenta" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Platillo" Relationship="Self.FKPlatilloVentaPlatillo" FromRole="PlatilloVenta" ToRole="Platillo" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKPlatilloVentaUsuarioCrea" FromRole="PlatilloVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKPlatilloVentaUsuarioModifica" FromRole="PlatilloVenta" ToRole="Usuario" />
+    <NavigationProperty Name="Venta" Relationship="Self.FKPlatilloVentaVenta" FromRole="PlatilloVenta" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Proveedor">
+    <Key>
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="idProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rfc" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idTipoProveedor" Type="Int32" Nullable="false" />
+    <Property Name="idAsentamiento" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Asentamiento" Relationship="Self.FKProveedorAsentamiento" FromRole="Proveedor" ToRole="Asentamiento" />
+    <NavigationProperty Name="Compra" Relationship="Self.FKCompraProveedor" FromRole="Proveedor" ToRole="Compra" />
+    <NavigationProperty Name="TipoProveedor" Relationship="Self.FKProveedorTipoProveedor" FromRole="Proveedor" ToRole="TipoProveedor" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKProveedorUsuarioCrea" FromRole="Proveedor" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKProveedorUsuarioModifica" FromRole="Proveedor" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Puesto">
+    <Key>
+      <PropertyRef Name="idPuesto" />
+    </Key>
+    <Property Name="idPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKPuestoUsuarioCrea" FromRole="Puesto" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKPuestoUsuarioModifica" FromRole="Puesto" ToRole="Usuario" />
+    <NavigationProperty Name="Trabajador" Relationship="Self.FKTrabajadorPuesto" FromRole="Puesto" ToRole="Trabajador" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="idSucursal" />
+    </Key>
+    <Property Name="idSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idAsentamiento" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Asentamiento" Relationship="Self.FKSucursalAsentamiento" FromRole="Sucursal" ToRole="Asentamiento" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKSucursalUsuarioCrea" FromRole="Sucursal" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKSucursalUsuarioModifica" FromRole="Sucursal" ToRole="Usuario" />
+    <NavigationProperty Name="Trabajador" Relationship="Self.FKTrabajadorSucursal" FromRole="Sucursal" ToRole="Trabajador" />
+    <NavigationProperty Name="Venta" Relationship="Self.FKVentaSucursal" FromRole="Sucursal" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="TipoAsentamiento">
+    <Key>
+      <PropertyRef Name="idTipoAsentamiento" />
+    </Key>
+    <Property Name="idTipoAsentamiento" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Asentamiento" Relationship="Self.FKAsentamientoTipoAsentamiento" FromRole="TipoAsentamiento" ToRole="Asentamiento" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKTipoAsentamientoUsuarioCrea" FromRole="TipoAsentamiento" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKTipoAsentamientoUsuarioModifica" FromRole="TipoAsentamiento" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="TipoCliente">
+    <Key>
+      <PropertyRef Name="idTipoCliente" />
+    </Key>
+    <Property Name="idTipoCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FKClienteTipoCliente" FromRole="TipoCliente" ToRole="Cliente" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKTipoClienteUsuarioCrea" FromRole="TipoCliente" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKTipoClienteUsuarioModifica" FromRole="TipoCliente" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="TipoPlatillo">
+    <Key>
+      <PropertyRef Name="idTipoPlatillo" />
+    </Key>
+    <Property Name="idTipoPlatillo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Platillo" Relationship="Self.FKPlatilloTipoPlatillo" FromRole="TipoPlatillo" ToRole="Platillo" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKTipoPlatilloUsuarioCrea" FromRole="TipoPlatillo" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKTipoPlatilloUsuarioModifica" FromRole="TipoPlatillo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="TipoProveedor">
+    <Key>
+      <PropertyRef Name="idTipoProveedor" />
+    </Key>
+    <Property Name="idTipoProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Proveedor" Relationship="Self.FKProveedorTipoProveedor" FromRole="TipoProveedor" ToRole="Proveedor" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKTipoProveedorUsuarioCrea" FromRole="TipoProveedor" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKTipoProveedorUsuarioModifica" FromRole="TipoProveedor" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Trabajador">
+    <Key>
+      <PropertyRef Name="idTrabajador" />
+    </Key>
+    <Property Name="idTrabajador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rfc" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idPuesto" Type="Int32" Nullable="false" />
+    <Property Name="idSucursal" Type="Int32" Nullable="false" />
+    <Property Name="fechaContrata" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Asistencia" Relationship="Self.FKAsistenciaTrabajador" FromRole="Trabajador" ToRole="Asistencia" />
+    <NavigationProperty Name="CorteVenta" Relationship="Self.FKCorteVentaTrabajador" FromRole="Trabajador" ToRole="CorteVenta" />
+    <NavigationProperty Name="Puesto" Relationship="Self.FKTrabajadorPuesto" FromRole="Trabajador" ToRole="Puesto" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FKTrabajadorSucursal" FromRole="Trabajador" ToRole="Sucursal" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKTrabajadorUsuarioCrea" FromRole="Trabajador" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKTrabajadorUsuarioModifica" FromRole="Trabajador" ToRole="Usuario" />
+    <NavigationProperty Name="Vehiculo" Relationship="Self.FKVehiculoTrabajador" FromRole="Trabajador" ToRole="Vehiculo" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clave" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" />
+    <Property Name="fechaCrea" Type="DateTime" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Almacen" Relationship="Self.FKAlmacenUsuarioCrea" FromRole="Usuario" ToRole="Almacen" />
+    <NavigationProperty Name="Almacen1" Relationship="Self.FKAlmacenUsuarioModifica" FromRole="Usuario" ToRole="Almacen" />
+    <NavigationProperty Name="Asentamiento" Relationship="Self.FKAsentamientoUsuarioCrea" FromRole="Usuario" ToRole="Asentamiento" />
+    <NavigationProperty Name="Asentamiento1" Relationship="Self.FKAsentamientoUsuarioModifica" FromRole="Usuario" ToRole="Asentamiento" />
+    <NavigationProperty Name="Asistencia" Relationship="Self.FKAsistenciaUsuarioCrea" FromRole="Usuario" ToRole="Asistencia" />
+    <NavigationProperty Name="Asistencia1" Relationship="Self.FKAsistenciaUsuarioModifica" FromRole="Usuario" ToRole="Asistencia" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FKClienteUsuarioCrea" FromRole="Usuario" ToRole="Cliente" />
+    <NavigationProperty Name="Cliente1" Relationship="Self.FKClienteUsuarioModifica" FromRole="Usuario" ToRole="Cliente" />
+    <NavigationProperty Name="Compra" Relationship="Self.FKCompraUsuarioCrea" FromRole="Usuario" ToRole="Compra" />
+    <NavigationProperty Name="Compra1" Relationship="Self.FKCompraUsuarioModifica" FromRole="Usuario" ToRole="Compra" />
+    <NavigationProperty Name="CorteVenta" Relationship="Self.FKCorteVentaUsuarioCrea" FromRole="Usuario" ToRole="CorteVenta" />
+    <NavigationProperty Name="CorteVenta1" Relationship="Self.FKCorteVentaUsuarioModifica" FromRole="Usuario" ToRole="CorteVenta" />
+    <NavigationProperty Name="Descuento" Relationship="Self.FKDescuentoUsuarioCrea" FromRole="Usuario" ToRole="Descuento" />
+    <NavigationProperty Name="Descuento1" Relationship="Self.FKDescuentoUsuarioModifica" FromRole="Usuario" ToRole="Descuento" />
+    <NavigationProperty Name="DescuentoVenta" Relationship="Self.FKDescuentoVentaUsuarioCrea" FromRole="Usuario" ToRole="DescuentoVenta" />
+    <NavigationProperty Name="DescuentoVenta1" Relationship="Self.FKDescuentoVentaUsuarioModifica" FromRole="Usuario" ToRole="DescuentoVenta" />
+    <NavigationProperty Name="DevolucionCompra" Relationship="Self.FKDevolucionCompraUsuarioCrea" FromRole="Usuario" ToRole="DevolucionCompra" />
+    <NavigationProperty Name="DevolucionCompra1" Relationship="Self.FKDevolucionCompraUsuarioModifica" FromRole="Usuario" ToRole="DevolucionCompra" />
+    <NavigationProperty Name="DevolucionVenta" Relationship="Self.FKDevolucionVentaUsuarioCrea" FromRole="Usuario" ToRole="DevolucionVenta" />
+    <NavigationProperty Name="DevolucionVenta1" Relationship="Self.FKDevolucionVentaUsuarioModifica" FromRole="Usuario" ToRole="DevolucionVenta" />
+    <NavigationProperty Name="Estado" Relationship="Self.FKEstadoUsuarioCrea" FromRole="Usuario" ToRole="Estado" />
+    <NavigationProperty Name="Estado1" Relationship="Self.FKEstadoUsuarioModifica" FromRole="Usuario" ToRole="Estado" />
+    <NavigationProperty Name="Material" Relationship="Self.FKMaterialUsuarioCrea" FromRole="Usuario" ToRole="Material" />
+    <NavigationProperty Name="Material1" Relationship="Self.FKMaterialUsuarioModifica" FromRole="Usuario" ToRole="Material" />
+    <NavigationProperty Name="Municipio" Relationship="Self.FKMunicipioUsuarioCrea" FromRole="Usuario" ToRole="Municipio" />
+    <NavigationProperty Name="Municipio1" Relationship="Self.FKMunicipioUsuarioModifica" FromRole="Usuario" ToRole="Municipio" />
+    <NavigationProperty Name="Platillo" Relationship="Self.FKPlatilloUsuarioCrea" FromRole="Usuario" ToRole="Platillo" />
+    <NavigationProperty Name="Platillo1" Relationship="Self.FKPlatilloUsuarioModifica" FromRole="Usuario" ToRole="Platillo" />
+    <NavigationProperty Name="PlatilloMaterial" Relationship="Self.FKPlatilloMaterialUsuarioCrea" FromRole="Usuario" ToRole="PlatilloMaterial" />
+    <NavigationProperty Name="PlatilloMaterial1" Relationship="Self.FKPlatilloMaterialUsuarioModifica" FromRole="Usuario" ToRole="PlatilloMaterial" />
+    <NavigationProperty Name="PlatilloVenta" Relationship="Self.FKPlatilloVentaUsuarioCrea" FromRole="Usuario" ToRole="PlatilloVenta" />
+    <NavigationProperty Name="PlatilloVenta1" Relationship="Self.FKPlatilloVentaUsuarioModifica" FromRole="Usuario" ToRole="PlatilloVenta" />
+    <NavigationProperty Name="Proveedor" Relationship="Self.FKProveedorUsuarioCrea" FromRole="Usuario" ToRole="Proveedor" />
+    <NavigationProperty Name="Proveedor1" Relationship="Self.FKProveedorUsuarioModifica" FromRole="Usuario" ToRole="Proveedor" />
+    <NavigationProperty Name="Puesto" Relationship="Self.FKPuestoUsuarioCrea" FromRole="Usuario" ToRole="Puesto" />
+    <NavigationProperty Name="Puesto1" Relationship="Self.FKPuestoUsuarioModifica" FromRole="Usuario" ToRole="Puesto" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FKSucursalUsuarioCrea" FromRole="Usuario" ToRole="Sucursal" />
+    <NavigationProperty Name="Sucursal1" Relationship="Self.FKSucursalUsuarioModifica" FromRole="Usuario" ToRole="Sucursal" />
+    <NavigationProperty Name="TipoAsentamiento" Relationship="Self.FKTipoAsentamientoUsuarioCrea" FromRole="Usuario" ToRole="TipoAsentamiento" />
+    <NavigationProperty Name="TipoAsentamiento1" Relationship="Self.FKTipoAsentamientoUsuarioModifica" FromRole="Usuario" ToRole="TipoAsentamiento" />
+    <NavigationProperty Name="TipoCliente" Relationship="Self.FKTipoClienteUsuarioCrea" FromRole="Usuario" ToRole="TipoCliente" />
+    <NavigationProperty Name="TipoCliente1" Relationship="Self.FKTipoClienteUsuarioModifica" FromRole="Usuario" ToRole="TipoCliente" />
+    <NavigationProperty Name="TipoPlatillo" Relationship="Self.FKTipoPlatilloUsuarioCrea" FromRole="Usuario" ToRole="TipoPlatillo" />
+    <NavigationProperty Name="TipoPlatillo1" Relationship="Self.FKTipoPlatilloUsuarioModifica" FromRole="Usuario" ToRole="TipoPlatillo" />
+    <NavigationProperty Name="TipoProveedor" Relationship="Self.FKTipoProveedorUsuarioCrea" FromRole="Usuario" ToRole="TipoProveedor" />
+    <NavigationProperty Name="TipoProveedor1" Relationship="Self.FKTipoProveedorUsuarioModifica" FromRole="Usuario" ToRole="TipoProveedor" />
+    <NavigationProperty Name="Trabajador" Relationship="Self.FKTrabajadorUsuarioCrea" FromRole="Usuario" ToRole="Trabajador" />
+    <NavigationProperty Name="Trabajador1" Relationship="Self.FKTrabajadorUsuarioModifica" FromRole="Usuario" ToRole="Trabajador" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKUsuarioUsuarioCrea" FromRole="Usuario" ToRole="Usuario1" />
+    <NavigationProperty Name="Usuario2" Relationship="Self.FKUsuarioUsuarioCrea" FromRole="Usuario1" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario11" Relationship="Self.FKUsuarioUsuarioModifica" FromRole="Usuario" ToRole="Usuario1" />
+    <NavigationProperty Name="Usuario3" Relationship="Self.FKUsuarioUsuarioModifica" FromRole="Usuario1" ToRole="Usuario" />
+    <NavigationProperty Name="Vehiculo" Relationship="Self.FKVehiculoUsuarioCrea" FromRole="Usuario" ToRole="Vehiculo" />
+    <NavigationProperty Name="Vehiculo1" Relationship="Self.FKVehiculoUsuarioModifica" FromRole="Usuario" ToRole="Vehiculo" />
+    <NavigationProperty Name="Venta" Relationship="Self.FKVentaUsuarioCrea" FromRole="Usuario" ToRole="Venta" />
+    <NavigationProperty Name="Venta1" Relationship="Self.FKVentaUsuarioModifica" FromRole="Usuario" ToRole="Venta" />
+    <NavigationProperty Name="Zona" Relationship="Self.FKZonaUsuarioCrea" FromRole="Usuario" ToRole="Zona" />
+    <NavigationProperty Name="Zona1" Relationship="Self.FKZonaUsuarioModifica" FromRole="Usuario" ToRole="Zona" />
+  </EntityType>
+  <EntityType Name="Vehiculo">
+    <Key>
+      <PropertyRef Name="idVehiculo" />
+    </Key>
+    <Property Name="idVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idTrabajador" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Trabajador" Relationship="Self.FKVehiculoTrabajador" FromRole="Vehiculo" ToRole="Trabajador" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKVehiculoUsuarioCrea" FromRole="Vehiculo" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKVehiculoUsuarioModifica" FromRole="Vehiculo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="idVenta" />
+    </Key>
+    <Property Name="idVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idSucursal" Type="Int32" />
+    <Property Name="idCliente" Type="Int32" />
+    <Property Name="idCorteVenta" Type="Int32" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FKVentaCliente" FromRole="Venta" ToRole="Cliente" />
+    <NavigationProperty Name="CorteVenta" Relationship="Self.FKVentaCorteVenta" FromRole="Venta" ToRole="CorteVenta" />
+    <NavigationProperty Name="DescuentoVenta" Relationship="Self.FKDescuentoVentaVenta" FromRole="Venta" ToRole="DescuentoVenta" />
+    <NavigationProperty Name="DevolucionVenta" Relationship="Self.FKDevolucionVentaVenta" FromRole="Venta" ToRole="DevolucionVenta" />
+    <NavigationProperty Name="PlatilloVenta" Relationship="Self.FKPlatilloVentaVenta" FromRole="Venta" ToRole="PlatilloVenta" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FKVentaSucursal" FromRole="Venta" ToRole="Sucursal" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKVentaUsuarioCrea" FromRole="Venta" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKVentaUsuarioModifica" FromRole="Venta" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Zona">
+    <Key>
+      <PropertyRef Name="idZona" />
+    </Key>
+    <Property Name="idZona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estatus" Type="Boolean" Nullable="false" />
+    <Property Name="idUsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="fechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idUsuarioModifica" Type="Int32" />
+    <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Asentamiento" Relationship="Self.FKAsentamientoZona" FromRole="Zona" ToRole="Asentamiento" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FKZonaUsuarioCrea" FromRole="Zona" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FKZonaUsuarioModifica" FromRole="Zona" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FKAlmacenUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAlmacenUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMaterialAlmacen">
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen">
+        <PropertyRef Name="idAlmacen" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="idAlmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsentamientoMunicipio">
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="1" />
+    <End Role="Asentamiento" Type="Self.Asentamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipio">
+        <PropertyRef Name="idMunicipio" />
+      </Principal>
+      <Dependent Role="Asentamiento">
+        <PropertyRef Name="idMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsentamientoTipoAsentamiento">
+    <End Role="TipoAsentamiento" Type="Self.TipoAsentamiento" Multiplicity="1" />
+    <End Role="Asentamiento" Type="Self.Asentamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoAsentamiento">
+        <PropertyRef Name="idTipoAsentamiento" />
+      </Principal>
+      <Dependent Role="Asentamiento">
+        <PropertyRef Name="idTipoAsentamiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsentamientoUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Asentamiento" Type="Self.Asentamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Asentamiento">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsentamientoUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Asentamiento" Type="Self.Asentamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Asentamiento">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsentamientoZona">
+    <End Role="Zona" Type="Self.Zona" Multiplicity="1" />
+    <End Role="Asentamiento" Type="Self.Asentamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zona">
+        <PropertyRef Name="idZona" />
+      </Principal>
+      <Dependent Role="Asentamiento">
+        <PropertyRef Name="idZona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKProveedorAsentamiento">
+    <End Role="Asentamiento" Type="Self.Asentamiento" Multiplicity="1" />
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asentamiento">
+        <PropertyRef Name="idAsentamiento" />
+      </Principal>
+      <Dependent Role="Proveedor">
+        <PropertyRef Name="idAsentamiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSucursalAsentamiento">
+    <End Role="Asentamiento" Type="Self.Asentamiento" Multiplicity="1" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asentamiento">
+        <PropertyRef Name="idAsentamiento" />
+      </Principal>
+      <Dependent Role="Sucursal">
+        <PropertyRef Name="idAsentamiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsistenciaTrabajador">
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajador">
+        <PropertyRef Name="idTrabajador" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="idTrabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsistenciaUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAsistenciaUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKClienteTipoCliente">
+    <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCliente">
+        <PropertyRef Name="idTipoCliente" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="idTipoCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKClienteUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKClienteUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVentaCliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCompraProveedor">
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+    <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedor">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCompraUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCompraUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDevolucionCompraCompra">
+    <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
+    <End Role="DevolucionCompra" Type="Self.DevolucionCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="idCompra" />
+      </Principal>
+      <Dependent Role="DevolucionCompra">
+        <PropertyRef Name="idCompra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMaterialCompra">
+    <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="idCompra" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="idCompra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCorteVentaTrabajador">
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+    <End Role="CorteVenta" Type="Self.CorteVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajador">
+        <PropertyRef Name="idTrabajador" />
+      </Principal>
+      <Dependent Role="CorteVenta">
+        <PropertyRef Name="idTrabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCorteVentaUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="CorteVenta" Type="Self.CorteVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="CorteVenta">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCorteVentaUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="CorteVenta" Type="Self.CorteVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="CorteVenta">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVentaCorteVenta">
+    <End Role="CorteVenta" Type="Self.CorteVenta" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CorteVenta">
+        <PropertyRef Name="idCorteVenta" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idCorteVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDescuentoUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Descuento" Type="Self.Descuento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Descuento">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDescuentoUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Descuento" Type="Self.Descuento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Descuento">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDescuentoVentaDescuento">
+    <End Role="Descuento" Type="Self.Descuento" Multiplicity="1" />
+    <End Role="DescuentoVenta" Type="Self.DescuentoVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Descuento">
+        <PropertyRef Name="idDescuento" />
+      </Principal>
+      <Dependent Role="DescuentoVenta">
+        <PropertyRef Name="idDescuento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDescuentoVentaUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="DescuentoVenta" Type="Self.DescuentoVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="DescuentoVenta">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDescuentoVentaUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="DescuentoVenta" Type="Self.DescuentoVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="DescuentoVenta">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDescuentoVentaVenta">
+    <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+    <End Role="DescuentoVenta" Type="Self.DescuentoVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="idVenta" />
+      </Principal>
+      <Dependent Role="DescuentoVenta">
+        <PropertyRef Name="idVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDevolucionCompraUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="DevolucionCompra" Type="Self.DevolucionCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="DevolucionCompra">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDevolucionCompraUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="DevolucionCompra" Type="Self.DevolucionCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="DevolucionCompra">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDevolucionVentaUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="DevolucionVenta" Type="Self.DevolucionVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="DevolucionVenta">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDevolucionVentaUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="DevolucionVenta" Type="Self.DevolucionVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="DevolucionVenta">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDevolucionVentaVenta">
+    <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+    <End Role="DevolucionVenta" Type="Self.DevolucionVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="idVenta" />
+      </Principal>
+      <Dependent Role="DevolucionVenta">
+        <PropertyRef Name="idVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKEstadoUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Estado">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKEstadoUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Estado">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMunicipioEstado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMaterialUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMaterialUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloMaterialMaterial">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="PlatilloMaterial" Type="Self.PlatilloMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="idMaterial" />
+      </Principal>
+      <Dependent Role="PlatilloMaterial">
+        <PropertyRef Name="idMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMunicipioUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMunicipioUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloMaterialPlatillo">
+    <End Role="Platillo" Type="Self.Platillo" Multiplicity="1" />
+    <End Role="PlatilloMaterial" Type="Self.PlatilloMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Platillo">
+        <PropertyRef Name="idPlatillo" />
+      </Principal>
+      <Dependent Role="PlatilloMaterial">
+        <PropertyRef Name="idPlatillo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloTipoPlatillo">
+    <End Role="TipoPlatillo" Type="Self.TipoPlatillo" Multiplicity="1" />
+    <End Role="Platillo" Type="Self.Platillo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPlatillo">
+        <PropertyRef Name="idTipoPlatillo" />
+      </Principal>
+      <Dependent Role="Platillo">
+        <PropertyRef Name="idTipoPlatillo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Platillo" Type="Self.Platillo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Platillo">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Platillo" Type="Self.Platillo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Platillo">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloVentaPlatillo">
+    <End Role="Platillo" Type="Self.Platillo" Multiplicity="1" />
+    <End Role="PlatilloVenta" Type="Self.PlatilloVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Platillo">
+        <PropertyRef Name="idPlatillo" />
+      </Principal>
+      <Dependent Role="PlatilloVenta">
+        <PropertyRef Name="idPlatillo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloMaterialUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="PlatilloMaterial" Type="Self.PlatilloMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="PlatilloMaterial">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloMaterialUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="PlatilloMaterial" Type="Self.PlatilloMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="PlatilloMaterial">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloVentaUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="PlatilloVenta" Type="Self.PlatilloVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="PlatilloVenta">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloVentaUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="PlatilloVenta" Type="Self.PlatilloVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="PlatilloVenta">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlatilloVentaVenta">
+    <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+    <End Role="PlatilloVenta" Type="Self.PlatilloVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="idVenta" />
+      </Principal>
+      <Dependent Role="PlatilloVenta">
+        <PropertyRef Name="idVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKProveedorTipoProveedor">
+    <End Role="TipoProveedor" Type="Self.TipoProveedor" Multiplicity="1" />
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProveedor">
+        <PropertyRef Name="idTipoProveedor" />
+      </Principal>
+      <Dependent Role="Proveedor">
+        <PropertyRef Name="idTipoProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKProveedorUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Proveedor">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKProveedorUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Proveedor">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPuestoUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Puesto">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPuestoUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Puesto">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTrabajadorPuesto">
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="idPuesto" />
+      </Principal>
+      <Dependent Role="Trabajador">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSucursalUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Sucursal">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSucursalUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Sucursal">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTrabajadorSucursal">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="Trabajador">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVentaSucursal">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoAsentamientoUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="TipoAsentamiento" Type="Self.TipoAsentamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoAsentamiento">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoAsentamientoUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="TipoAsentamiento" Type="Self.TipoAsentamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoAsentamiento">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoClienteUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoCliente">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoClienteUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoCliente">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoPlatilloUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="TipoPlatillo" Type="Self.TipoPlatillo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoPlatillo">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoPlatilloUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="TipoPlatillo" Type="Self.TipoPlatillo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoPlatillo">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoProveedorUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="TipoProveedor" Type="Self.TipoProveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoProveedor">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTipoProveedorUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="TipoProveedor" Type="Self.TipoProveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TipoProveedor">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTrabajadorUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Trabajador">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTrabajadorUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Trabajador">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVehiculoTrabajador">
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+    <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajador">
+        <PropertyRef Name="idTrabajador" />
+      </Principal>
+      <Dependent Role="Vehiculo">
+        <PropertyRef Name="idTrabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKUsuarioUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Usuario1" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Usuario1">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKUsuarioUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Usuario1" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Usuario1">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVehiculoUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Vehiculo">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVehiculoUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Vehiculo">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVentaUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVentaUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKZonaUsuarioCrea">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Zona" Type="Self.Zona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Zona">
+        <PropertyRef Name="idUsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKZonaUsuarioModifica">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Zona" Type="Self.Zona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Zona">
+        <PropertyRef Name="idUsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CafeteriaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Almacen" EntityType="Self.Almacen" />
+    <EntitySet Name="Asentamiento" EntityType="Self.Asentamiento" />
+    <EntitySet Name="Asistencia" EntityType="Self.Asistencia" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Compra" EntityType="Self.Compra" />
+    <EntitySet Name="CorteVenta" EntityType="Self.CorteVenta" />
+    <EntitySet Name="Descuento" EntityType="Self.Descuento" />
+    <EntitySet Name="DescuentoVenta" EntityType="Self.DescuentoVenta" />
+    <EntitySet Name="DevolucionCompra" EntityType="Self.DevolucionCompra" />
+    <EntitySet Name="DevolucionVenta" EntityType="Self.DevolucionVenta" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" />
+    <EntitySet Name="Material" EntityType="Self.Material" />
+    <EntitySet Name="Municipio" EntityType="Self.Municipio" />
+    <EntitySet Name="Platillo" EntityType="Self.Platillo" />
+    <EntitySet Name="PlatilloMaterial" EntityType="Self.PlatilloMaterial" />
+    <EntitySet Name="PlatilloVenta" EntityType="Self.PlatilloVenta" />
+    <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+    <EntitySet Name="Puesto" EntityType="Self.Puesto" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+    <EntitySet Name="TipoAsentamiento" EntityType="Self.TipoAsentamiento" />
+    <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" />
+    <EntitySet Name="TipoPlatillo" EntityType="Self.TipoPlatillo" />
+    <EntitySet Name="TipoProveedor" EntityType="Self.TipoProveedor" />
+    <EntitySet Name="Trabajador" EntityType="Self.Trabajador" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" />
+    <EntitySet Name="Venta" EntityType="Self.Venta" />
+    <EntitySet Name="Zona" EntityType="Self.Zona" />
+    <AssociationSet Name="FKAlmacenUsuarioCrea" Association="Self.FKAlmacenUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Almacen" EntitySet="Almacen" />
+    </AssociationSet>
+    <AssociationSet Name="FKAlmacenUsuarioModifica" Association="Self.FKAlmacenUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Almacen" EntitySet="Almacen" />
+    </AssociationSet>
+    <AssociationSet Name="FKMaterialAlmacen" Association="Self.FKMaterialAlmacen">
+      <End Role="Almacen" EntitySet="Almacen" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsentamientoMunicipio" Association="Self.FKAsentamientoMunicipio">
+      <End Role="Municipio" EntitySet="Municipio" />
+      <End Role="Asentamiento" EntitySet="Asentamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsentamientoTipoAsentamiento" Association="Self.FKAsentamientoTipoAsentamiento">
+      <End Role="TipoAsentamiento" EntitySet="TipoAsentamiento" />
+      <End Role="Asentamiento" EntitySet="Asentamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsentamientoUsuarioCrea" Association="Self.FKAsentamientoUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Asentamiento" EntitySet="Asentamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsentamientoUsuarioModifica" Association="Self.FKAsentamientoUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Asentamiento" EntitySet="Asentamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsentamientoZona" Association="Self.FKAsentamientoZona">
+      <End Role="Zona" EntitySet="Zona" />
+      <End Role="Asentamiento" EntitySet="Asentamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FKProveedorAsentamiento" Association="Self.FKProveedorAsentamiento">
+      <End Role="Asentamiento" EntitySet="Asentamiento" />
+      <End Role="Proveedor" EntitySet="Proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FKSucursalAsentamiento" Association="Self.FKSucursalAsentamiento">
+      <End Role="Asentamiento" EntitySet="Asentamiento" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsistenciaTrabajador" Association="Self.FKAsistenciaTrabajador">
+      <End Role="Trabajador" EntitySet="Trabajador" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsistenciaUsuarioCrea" Association="Self.FKAsistenciaUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FKAsistenciaUsuarioModifica" Association="Self.FKAsistenciaUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FKClienteTipoCliente" Association="Self.FKClienteTipoCliente">
+      <End Role="TipoCliente" EntitySet="TipoCliente" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FKClienteUsuarioCrea" Association="Self.FKClienteUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FKClienteUsuarioModifica" Association="Self.FKClienteUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FKVentaCliente" Association="Self.FKVentaCliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FKCompraProveedor" Association="Self.FKCompraProveedor">
+      <End Role="Proveedor" EntitySet="Proveedor" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="FKCompraUsuarioCrea" Association="Self.FKCompraUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="FKCompraUsuarioModifica" Association="Self.FKCompraUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="FKDevolucionCompraCompra" Association="Self.FKDevolucionCompraCompra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="DevolucionCompra" EntitySet="DevolucionCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FKMaterialCompra" Association="Self.FKMaterialCompra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FKCorteVentaTrabajador" Association="Self.FKCorteVentaTrabajador">
+      <End Role="Trabajador" EntitySet="Trabajador" />
+      <End Role="CorteVenta" EntitySet="CorteVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKCorteVentaUsuarioCrea" Association="Self.FKCorteVentaUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="CorteVenta" EntitySet="CorteVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKCorteVentaUsuarioModifica" Association="Self.FKCorteVentaUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="CorteVenta" EntitySet="CorteVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKVentaCorteVenta" Association="Self.FKVentaCorteVenta">
+      <End Role="CorteVenta" EntitySet="CorteVenta" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FKDescuentoUsuarioCrea" Association="Self.FKDescuentoUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Descuento" EntitySet="Descuento" />
+    </AssociationSet>
+    <AssociationSet Name="FKDescuentoUsuarioModifica" Association="Self.FKDescuentoUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Descuento" EntitySet="Descuento" />
+    </AssociationSet>
+    <AssociationSet Name="FKDescuentoVentaDescuento" Association="Self.FKDescuentoVentaDescuento">
+      <End Role="Descuento" EntitySet="Descuento" />
+      <End Role="DescuentoVenta" EntitySet="DescuentoVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKDescuentoVentaUsuarioCrea" Association="Self.FKDescuentoVentaUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="DescuentoVenta" EntitySet="DescuentoVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKDescuentoVentaUsuarioModifica" Association="Self.FKDescuentoVentaUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="DescuentoVenta" EntitySet="DescuentoVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKDescuentoVentaVenta" Association="Self.FKDescuentoVentaVenta">
+      <End Role="Venta" EntitySet="Venta" />
+      <End Role="DescuentoVenta" EntitySet="DescuentoVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKDevolucionCompraUsuarioCrea" Association="Self.FKDevolucionCompraUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="DevolucionCompra" EntitySet="DevolucionCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FKDevolucionCompraUsuarioModifica" Association="Self.FKDevolucionCompraUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="DevolucionCompra" EntitySet="DevolucionCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FKDevolucionVentaUsuarioCrea" Association="Self.FKDevolucionVentaUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="DevolucionVenta" EntitySet="DevolucionVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKDevolucionVentaUsuarioModifica" Association="Self.FKDevolucionVentaUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="DevolucionVenta" EntitySet="DevolucionVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKDevolucionVentaVenta" Association="Self.FKDevolucionVentaVenta">
+      <End Role="Venta" EntitySet="Venta" />
+      <End Role="DevolucionVenta" EntitySet="DevolucionVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKEstadoUsuarioCrea" Association="Self.FKEstadoUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Estado" EntitySet="Estado" />
+    </AssociationSet>
+    <AssociationSet Name="FKEstadoUsuarioModifica" Association="Self.FKEstadoUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Estado" EntitySet="Estado" />
+    </AssociationSet>
+    <AssociationSet Name="FKMunicipioEstado" Association="Self.FKMunicipioEstado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FKMaterialUsuarioCrea" Association="Self.FKMaterialUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FKMaterialUsuarioModifica" Association="Self.FKMaterialUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloMaterialMaterial" Association="Self.FKPlatilloMaterialMaterial">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="PlatilloMaterial" EntitySet="PlatilloMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FKMunicipioUsuarioCrea" Association="Self.FKMunicipioUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FKMunicipioUsuarioModifica" Association="Self.FKMunicipioUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloMaterialPlatillo" Association="Self.FKPlatilloMaterialPlatillo">
+      <End Role="Platillo" EntitySet="Platillo" />
+      <End Role="PlatilloMaterial" EntitySet="PlatilloMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloTipoPlatillo" Association="Self.FKPlatilloTipoPlatillo">
+      <End Role="TipoPlatillo" EntitySet="TipoPlatillo" />
+      <End Role="Platillo" EntitySet="Platillo" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloUsuarioCrea" Association="Self.FKPlatilloUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Platillo" EntitySet="Platillo" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloUsuarioModifica" Association="Self.FKPlatilloUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Platillo" EntitySet="Platillo" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloVentaPlatillo" Association="Self.FKPlatilloVentaPlatillo">
+      <End Role="Platillo" EntitySet="Platillo" />
+      <End Role="PlatilloVenta" EntitySet="PlatilloVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloMaterialUsuarioCrea" Association="Self.FKPlatilloMaterialUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="PlatilloMaterial" EntitySet="PlatilloMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloMaterialUsuarioModifica" Association="Self.FKPlatilloMaterialUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="PlatilloMaterial" EntitySet="PlatilloMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloVentaUsuarioCrea" Association="Self.FKPlatilloVentaUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="PlatilloVenta" EntitySet="PlatilloVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloVentaUsuarioModifica" Association="Self.FKPlatilloVentaUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="PlatilloVenta" EntitySet="PlatilloVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlatilloVentaVenta" Association="Self.FKPlatilloVentaVenta">
+      <End Role="Venta" EntitySet="Venta" />
+      <End Role="PlatilloVenta" EntitySet="PlatilloVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FKProveedorTipoProveedor" Association="Self.FKProveedorTipoProveedor">
+      <End Role="TipoProveedor" EntitySet="TipoProveedor" />
+      <End Role="Proveedor" EntitySet="Proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FKProveedorUsuarioCrea" Association="Self.FKProveedorUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Proveedor" EntitySet="Proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FKProveedorUsuarioModifica" Association="Self.FKProveedorUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Proveedor" EntitySet="Proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FKPuestoUsuarioCrea" Association="Self.FKPuestoUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Puesto" EntitySet="Puesto" />
+    </AssociationSet>
+    <AssociationSet Name="FKPuestoUsuarioModifica" Association="Self.FKPuestoUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Puesto" EntitySet="Puesto" />
+    </AssociationSet>
+    <AssociationSet Name="FKTrabajadorPuesto" Association="Self.FKTrabajadorPuesto">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Trabajador" EntitySet="Trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FKSucursalUsuarioCrea" Association="Self.FKSucursalUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FKSucursalUsuarioModifica" Association="Self.FKSucursalUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FKTrabajadorSucursal" Association="Self.FKTrabajadorSucursal">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Trabajador" EntitySet="Trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FKVentaSucursal" Association="Self.FKVentaSucursal">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoAsentamientoUsuarioCrea" Association="Self.FKTipoAsentamientoUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoAsentamiento" EntitySet="TipoAsentamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoAsentamientoUsuarioModifica" Association="Self.FKTipoAsentamientoUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoAsentamiento" EntitySet="TipoAsentamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoClienteUsuarioCrea" Association="Self.FKTipoClienteUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoCliente" EntitySet="TipoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoClienteUsuarioModifica" Association="Self.FKTipoClienteUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoCliente" EntitySet="TipoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoPlatilloUsuarioCrea" Association="Self.FKTipoPlatilloUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoPlatillo" EntitySet="TipoPlatillo" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoPlatilloUsuarioModifica" Association="Self.FKTipoPlatilloUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoPlatillo" EntitySet="TipoPlatillo" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoProveedorUsuarioCrea" Association="Self.FKTipoProveedorUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoProveedor" EntitySet="TipoProveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FKTipoProveedorUsuarioModifica" Association="Self.FKTipoProveedorUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="TipoProveedor" EntitySet="TipoProveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FKTrabajadorUsuarioCrea" Association="Self.FKTrabajadorUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Trabajador" EntitySet="Trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FKTrabajadorUsuarioModifica" Association="Self.FKTrabajadorUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Trabajador" EntitySet="Trabajador" />
+    </AssociationSet>
+    <AssociationSet Name="FKVehiculoTrabajador" Association="Self.FKVehiculoTrabajador">
+      <End Role="Trabajador" EntitySet="Trabajador" />
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FKUsuarioUsuarioCrea" Association="Self.FKUsuarioUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Usuario1" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FKUsuarioUsuarioModifica" Association="Self.FKUsuarioUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Usuario1" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FKVehiculoUsuarioCrea" Association="Self.FKVehiculoUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FKVehiculoUsuarioModifica" Association="Self.FKVehiculoUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FKVentaUsuarioCrea" Association="Self.FKVentaUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FKVentaUsuarioModifica" Association="Self.FKVentaUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FKZonaUsuarioCrea" Association="Self.FKZonaUsuarioCrea">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Zona" EntitySet="Zona" />
+    </AssociationSet>
+    <AssociationSet Name="FKZonaUsuarioModifica" Association="Self.FKZonaUsuarioModifica">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Zona" EntitySet="Zona" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

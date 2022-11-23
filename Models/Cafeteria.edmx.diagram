@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="955eadfa3ba6466ea678018350ead80d" Name="Diagram1">
+        <EntityTypeShape EntityType="CafeteriaModel.Almacen" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Asentamiento" Width="1.5" PointX="5.25" PointY="50.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Asistencia" Width="1.5" PointX="15" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Cliente" Width="1.5" PointX="5.25" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Compra" Width="1.5" PointX="15.75" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.CorteVenta" Width="1.5" PointX="18" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Descuento" Width="1.5" PointX="3" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.DescuentoVenta" Width="1.5" PointX="25.5" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.DevolucionCompra" Width="1.5" PointX="21" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.DevolucionVenta" Width="1.5" PointX="28.5" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Estado" Width="1.5" PointX="3" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Material" Width="1.5" PointX="5.25" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Municipio" Width="1.5" PointX="5.25" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Platillo" Width="1.5" PointX="8.25" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.PlatilloMaterial" Width="1.5" PointX="10.5" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.PlatilloVenta" Width="1.5" PointX="25.5" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Proveedor" Width="1.5" PointX="10.5" PointY="50.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Puesto" Width="1.5" PointX="3" PointY="50.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Sucursal" Width="1.5" PointX="7.5" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.TipoAsentamiento" Width="1.5" PointX="3" PointY="54.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.TipoCliente" Width="1.5" PointX="3" PointY="58" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.TipoPlatillo" Width="1.5" PointX="3" PointY="61.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.TipoProveedor" Width="1.5" PointX="3" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Trabajador" Width="1.5" PointX="12.75" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Usuario" Width="1.5" PointX="0.75" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Vehiculo" Width="1.5" PointX="18" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Venta" Width="1.5" PointX="23.25" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Zona" Width="1.5" PointX="3" PointY="69.625" IsExpanded="true" />
+        <AssociationConnector Association="CafeteriaModel.FKAlmacenUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAlmacenUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKMaterialAlmacen" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsentamientoMunicipio" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsentamientoTipoAsentamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsentamientoUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsentamientoUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsentamientoZona" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKProveedorAsentamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKSucursalAsentamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsistenciaTrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsistenciaUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKAsistenciaUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKClienteTipoCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKClienteUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKClienteUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVentaCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKCompraProveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKCompraUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKCompraUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDevolucionCompraCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKMaterialCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKCorteVentaTrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKCorteVentaUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKCorteVentaUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVentaCorteVenta" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDescuentoUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDescuentoUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDescuentoVentaDescuento" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDescuentoVentaUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDescuentoVentaUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDescuentoVentaVenta" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDevolucionCompraUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDevolucionCompraUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDevolucionVentaUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDevolucionVentaUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKDevolucionVentaVenta" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKEstadoUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKEstadoUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKMunicipioEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKMaterialUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKMaterialUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloMaterialMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKMunicipioUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKMunicipioUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloMaterialPlatillo" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloTipoPlatillo" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloVentaPlatillo" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloMaterialUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloMaterialUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloVentaUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloVentaUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPlatilloVentaVenta" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKProveedorTipoProveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKProveedorUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKProveedorUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPuestoUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKPuestoUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTrabajadorPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKSucursalUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKSucursalUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTrabajadorSucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVentaSucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoAsentamientoUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoAsentamientoUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoClienteUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoClienteUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoPlatilloUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoPlatilloUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoProveedorUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTipoProveedorUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTrabajadorUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKTrabajadorUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVehiculoTrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKUsuarioUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKUsuarioUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVehiculoUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVehiculoUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVentaUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKVentaUsuarioModifica" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKZonaUsuarioCrea" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeteriaModel.FKZonaUsuarioModifica" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
